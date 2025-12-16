@@ -17,13 +17,13 @@ const ServicesSection = () => {
     {
       title: "Control Burns",
       description:
-        "Planning and executing all types of control burns fore landowners. From stackburns, grass burns and large ecological burns, we do it all.",
+        "Planning and executing all types of control burns for landowners. From stackburns, grass burns and large ecological burns, we do it all.",
       icon: "🔥",
     },
     {
       title: "Training",
       description:
-        "We offer the following training. Accredited First Aid, Fire Marshall / use of extinguishers, Basic Wildfire Trainging, Snake Awareness Workshops, First aid Workshops.",
+        "We offer the following training: Accredited First Aid, Fire Marshall / use of extinguishers, Basic Wildfire Training, Snake Awareness Workshops, First aid Workshops.",
       icon: "🎓",
     },
   ];
