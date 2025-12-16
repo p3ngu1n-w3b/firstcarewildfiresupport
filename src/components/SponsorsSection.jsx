@@ -1,22 +1,23 @@
 import React from "react";
 
+import nisproAutoLogo from "../assets/sponsors/nispro-auto-george.jpg";
+import tyremartLogo from "../assets/sponsors/tyremart-george.png";
+import thousandSensationsLogo from "../assets/sponsors/thousand-sensations-george.jpg";
+
 const sponsors = [
   {
     name: "Nispro Auto",
-    // TODO: Replace this with the actual path to the Optimum Hosting logo image
-    // For example, if you place it in public/sponsors/optimum-hosting.png then:
-    // logo: "/sponsors/optimum-hosting.png",
-    logo: "src/assets/sponsors/nispro-auto-george.jpg",
+    logo: nisproAutoLogo,
     url: "https://nisproautogeorge.co.za/",
   },
   {
     name: "Tyremart",
-    logo: "src/assets/sponsors/tyremart-george.png",
+    logo: tyremartLogo,
     url: "https://www.tyremart.co.za/",
   },
   {
     name: "Thousand Sensations",
-    logo: "src/assets/sponsors/thousand-sensations-george.jpg",
+    logo: thousandSensationsLogo,
     url: "https://thousandsensations.co.za/",
   },
 ];
