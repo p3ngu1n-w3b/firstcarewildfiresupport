@@ -40,8 +40,8 @@ const ContactSection = () => {
     try {
       // Replace with your EmailJS service ID, template ID, and public key
       await emailjs.send(
-        "service_2v0vbux",
-        "template_d0zoqe4",
+        "service_s6403fa",
+        "template_iahuddc",
         {
           name: formData.name,
           email: formData.email,
@@ -49,7 +49,7 @@ const ContactSection = () => {
           message: formData.message,
           service: formData.service,
         },
-        "mdz0_CAT6lJzBIvK0"
+        "zWJ63oO2n7wbagWxP"
       );
 
       setSubmitStatus({
