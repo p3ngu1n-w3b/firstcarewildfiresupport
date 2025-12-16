@@ -35,7 +35,7 @@ const ServicesSection = () => {
           <h2 className="text-3xl font-bold text-gray-900">Our Services</h2>
           <div className="w-16 h-1 bg-[rgb(252,3,13)] mx-auto mt-4 mb-6"></div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Assisting and combatting wilfires, veldfires and structure protection.
+            Assisting and combatting wildfires, veldfires and structure protection.
           </p>
         </div>
 
