@@ -3,6 +3,7 @@ import React from "react";
 import nisproAutoLogo from "../assets/sponsors/nispro-auto-george.jpg";
 import tyremartLogo from "../assets/sponsors/tyremart-george.png";
 import thousandSensationsLogo from "../assets/sponsors/thousand-sensations-george.jpg";
+import optimumHostingLogo from "../assets/sponsors/optimumhosting.jpg";
 
 const sponsors = [
   {
@@ -20,6 +21,11 @@ const sponsors = [
     logo: thousandSensationsLogo,
     url: "https://thousandsensations.co.za/",
   },
+  {
+    name: "Optimum Hosting",
+    logo: optimumHostingLogo,
+    url: "https://www.ohs.co.za/",
+  },
 ];
 
 const SponsorsSection = () => {
@@ -33,7 +39,7 @@ const SponsorsSection = () => {
           <div className="w-16 h-1 bg-[rgb(252,3,13)] mx-auto mt-4"></div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-8 items-center justify-items-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
           {sponsors.map((sponsor) => (
             <a
               key={sponsor.name}
