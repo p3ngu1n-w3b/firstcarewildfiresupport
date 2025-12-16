@@ -46,6 +46,9 @@ const Footer = () => {
           <p>
             &copy; {new Date().getFullYear()} Firstcare Wildfire Support. All rights reserved.
           </p>
+          <p>
+            Hosting proudly sponsored by Optimum Hosting.
+          </p>
         </div>
       </div>
     </footer>

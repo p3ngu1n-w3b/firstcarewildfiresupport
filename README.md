@@ -23,7 +23,7 @@ npm install
 ```bash
 npm run dev
 ```
-The app will typically be available at `http://localhost:5173/` (or as reported by Vite).
+The app will typically be available at `http://localhost:3000/` (or as reported by Vite).
 
 ### Build for production
 ```bash
