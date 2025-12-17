@@ -24,7 +24,10 @@ const HeroSection = () => {
           Fire Risk Reduction
         </h1>
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          Wildfire Prevention Training
+          Wildfire Prevention
+        </h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          Training
         </h1>
         <button onClick={scrollToContact} className="btn mt-8">
           Contact Us

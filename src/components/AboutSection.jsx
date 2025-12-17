@@ -28,7 +28,7 @@ const AboutSection = () => {
               Established through passion for emergency services and helping our communities.
               FWS quickly became a trusted and respected name in the Garden Route and further afield.
               We already have very good working relationships with several Fire Departments, Southern Cape Fire Protection
-              Association and Frie Management Units.
+              Association and Fire Management Units.
             </p>
             <p className="text-gray-600 mb-4">
               With combined experience of well over 50 years in wildland firefighting, FWS consistently deliver far beyond expectations.
