@@ -19,7 +19,7 @@ const DonationsSection = () => {
             <p className="text-lg text-gray-800 leading-relaxed md:max-w-xl">
               Help us to make a difference as a volunteer organisation we are
               reliant on donations and sponsorships to continue assisting the
-              communities of the western cape in the fight against fire.
+              communities of the Western Cape in the fight against fire.
             </p>
             <div className="bg-[rgb(252,3,13)] text-white rounded-xl px-6 py-4 text-center shadow-md">
               <p className="text-sm font-semibold uppercase tracking-wide">
