@@ -7,6 +7,7 @@ import GallerySection from "./components/GallerySection";
 import ServicesSection from "./components/ServicesSection";
 import ContactSection from "./components/ContactSection";
 import SponsorsSection from "./components/SponsorsSection";
+import DonationsSection from "./components/DonationsSection";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <AboutSection />
       <GallerySection />
       <ServicesSection />
+      <DonationsSection />
       <ContactSection />
       <SponsorsSection />
       <Footer />

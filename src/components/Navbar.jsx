@@ -66,6 +66,12 @@ const Navbar = () => {
                 >
                   Services
                 </button>
+                <button
+                  onClick={() => scrollToSection("donations")}
+                  className="btn"
+                >
+                  Donate
+                </button>
                 {/* <button onClick={() => scrollToSection('testimonials')} className="nav-link">Testimonials</button> */}
                 <button
                   onClick={() => scrollToSection("contact")}
@@ -80,6 +86,7 @@ const Navbar = () => {
                 <span className="nav-link">About</span>
                 <span className="nav-link">Gallery</span>
                 <span className="nav-link">Services</span>
+                <span className="nav-link">Donate</span>
                 {/* <span className="nav-link">Testimonials</span> */}
                 <span className="btn">Contact Us</span>
               </>
@@ -146,6 +153,12 @@ const Navbar = () => {
               className="nav-mobile-link"
             >
               Services
+            </button>
+            <button
+              onClick={() => scrollToSection("donations")}
+              className="nav-mobile-link"
+            >
+              Donate
             </button>
             <button
               onClick={() => scrollToSection("contact")}
