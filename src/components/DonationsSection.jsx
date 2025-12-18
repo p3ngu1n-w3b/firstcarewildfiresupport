@@ -46,7 +46,7 @@ const DonationsSection = () => {
                 </div>
                 <div>
                   <dt className="font-medium">Account number</dt>
-                  <dd>196758637</dd>
+                  <dd>1967586371</dd>
                 </div>
                 <div>
                   <dt className="font-medium">Reference</dt>
