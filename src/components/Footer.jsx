@@ -50,6 +50,33 @@ const Footer = () => {
             Hosting proudly sponsored by Optimum Hosting.
           </p>
         </div>
+
+        <div className="border-t border-gray-700 mt-8 pt-8 text-center space-y-2">
+          <p className="text-sm text-gray-400">
+            This website was built by 
+            <a href="https://www.linkedin.com/in/jaco-roux/" target="_blank">
+              <span className="font-medium text-gray-200 ml-1">Jaco Roux</span>
+            </a>.
+          </p>
+
+          <p className="text-sm text-gray-400">
+            For any website requirements:&nbsp;
+            <a
+              href="tel:0658095070"
+              className="hover:text-white transition"
+            >
+              065&nbsp;809&nbsp;5070
+            </a>
+            &nbsp;|&nbsp;
+            <a
+              href="mailto:jaco.roux9@gmail.com"
+              className="hover:text-white transition"
+            >
+              jaco.roux9@gmail.com
+            </a>
+          </p>
+        </div>
+
       </div>
     </footer>
   );
