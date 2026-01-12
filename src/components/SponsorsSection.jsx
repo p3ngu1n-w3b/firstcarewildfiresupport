@@ -6,6 +6,7 @@ import thousandSensationsLogo from "../assets/sponsors/thousand-sensations-georg
 import optimumHostingLogo from "../assets/sponsors/optimumhosting.jpg";
 import theLocalChoiceLogo from "../assets/sponsors/theLocalChoiceLogo.png";
 import cmsLogo from "../assets/sponsors/cmsLogo.jpg";
+import grcom from "../assets/sponsors/grcom.png"
 
 const sponsors = [
   {
@@ -38,6 +39,11 @@ const sponsors = [
     name: "CMS Towing",
     logo: cmsLogo,
     url: "https://www.facebook.com/profile.php?id=100063961935693",
+  },
+  {
+    name: "GardenRoute Communication",
+    logo: grcom,
+    url: "https://grcom.co.za/ws01/",
   },
 ];
 
