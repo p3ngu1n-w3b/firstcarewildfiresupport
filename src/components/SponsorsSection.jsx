@@ -7,6 +7,7 @@ import optimumHostingLogo from "../assets/sponsors/optimumhosting.jpg";
 import theLocalChoiceLogo from "../assets/sponsors/theLocalChoiceLogo.png";
 import cmsLogo from "../assets/sponsors/cmsLogo.jpg";
 import grcom from "../assets/sponsors/grcom.png"
+import besafe from "../assets/sponsors/be-safe.png"
 
 const sponsors = [
   {
@@ -44,6 +45,11 @@ const sponsors = [
     name: "GardenRoute Communication",
     logo: grcom,
     url: "https://grcom.co.za/ws01/",
+  },
+  {
+    name: "Be Safe Paramedical",
+    logo: besafe,
+    url: "https://be-safe.co.za/",
   },
 ];
 
