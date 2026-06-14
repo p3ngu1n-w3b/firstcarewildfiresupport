@@ -1,49 +1,109 @@
 # Firstcare Wildfire Support
 
-Firstcare Wildfire Support is a web application built with React and Vite to help communities and responders access up‑to‑date wildfire information, resources, and support channels.
+Marketing website for Firstcare Wildfire Support — wildfire prevention, firefighting, and training services across the Garden Route, Western Cape.
+
+**Live site:** [wildfiresupport.org.za](https://www.wildfiresupport.org.za/)
 
 ## Tech Stack
-- React
-- TypeScript
-- Vite
-- PostCSS / Tailwind
+
+- React 19 + Vite 6
+- Tailwind CSS v4
+- Framer Motion (animations)
+- React Router (home + gallery pages)
+- EmailJS (contact form)
 
 ## Getting Started
 
 ### Prerequisites
-- Node.js (LTS recommended)
-- npm, pnpm, or yarn
 
-### Install dependencies
+- Node.js (LTS)
+- npm
+
+### Install
+
 ```bash
 npm install
 ```
 
-### Run the development server
+### Environment variables
+
+Copy `.env.example` to `.env` and fill in values:
+
+```bash
+cp .env.example .env
+```
+
+| Variable | Description |
+|----------|-------------|
+| `VITE_EMAILJS_SERVICE_ID` | EmailJS service ID |
+| `VITE_EMAILJS_TEMPLATE_ID` | EmailJS template ID |
+| `VITE_EMAILJS_PUBLIC_KEY` | EmailJS public key |
+| `VITE_WHATSAPP_CHANNEL_URL` | WhatsApp Channel invite link (optional — add when ready) |
+
+### Development
+
 ```bash
 npm run dev
 ```
-The app will typically be available at `http://localhost:3000/` (or as reported by Vite).
 
-### Build for production
+Opens at `http://localhost:3000`
+
+### Production build
+
 ```bash
 npm run build
-```
-The optimized production build will be output to the `dist` directory.
-
-### Preview the production build
-```bash
 npm run preview
 ```
 
-## Project Scripts
-Common scripts defined in `package.json`:
-- `npm run dev` – start the Vite dev server
-- `npm run build` – create a production build
-- `npm run preview` – preview the built app locally
-- `npm run lint` – run linting (if configured)
+## Project Structure
 
-## Development Notes
-- Source code lives in the `src` directory.
-- Static assets live in the `public` directory.
-- Update this README as features are added (e.g. authentication, maps, alerts, contact forms).
+```
+src/
+├── components/       # Section components + ui/ + layout/
+├── data/             # siteContent.js, testimonials.js, galleryImages.js
+├── pages/            # HomePage, GalleryPage
+├── utils/            # scroll helpers, motion variants
+└── App.jsx           # Router shell
+```
+
+## Updating Content
+
+### Fire season alert banner
+
+Edit `fireSeasonAlert` in `src/data/siteContent.js`:
+
+```js
+export const fireSeasonAlert = {
+  enabled: true,
+  message: "Your alert message here",
+};
+```
+
+### WhatsApp Channel
+
+When you have your channel invite link, add it to `.env`:
+
+```
+VITE_WHATSAPP_CHANNEL_URL=https://whatsapp.com/channel/0029V...
+```
+
+The Stay Connected section will automatically show a "Join Our Channel" button. Until then, it shows a direct WhatsApp message link.
+
+### Testimonials
+
+Edit `src/data/testimonials.js` — replace placeholder quotes with real client feedback.
+
+### Gallery images
+
+Drop new images into `src/assets/gallery/` and add category mappings in `src/data/galleryImages.js`.
+
+### Sponsors
+
+Update the `sponsors` array in `src/data/siteContent.js`.
+
+## Scripts
+
+- `npm run dev` — development server
+- `npm run build` — production build to `dist/`
+- `npm run preview` — preview production build
+- `npm run lint` — ESLint
