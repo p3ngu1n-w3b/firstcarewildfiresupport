@@ -120,9 +120,11 @@ const GalleryPage = () => {
 
                       return (
                         <div key={sub.id}>
-                          <h4 className="text-lg font-semibold text-gray-700 mb-4">
-                            {sub.title}
-                          </h4>
+                          {sub.id !== "treeFalling" && (
+                            <h4 className="text-lg font-semibold text-gray-700 mb-4">
+                              {sub.title}
+                            </h4>
+                          )}
                           <GalleryGrid
                             images={displayImages}
                             onImageClick={(item) =>
