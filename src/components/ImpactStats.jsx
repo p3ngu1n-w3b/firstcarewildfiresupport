@@ -48,7 +48,7 @@ const ImpactStats = () => {
     <section className="section-dark py-12 -mt-1 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-8"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"

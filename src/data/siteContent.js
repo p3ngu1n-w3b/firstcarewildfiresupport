@@ -52,7 +52,6 @@ export const impactStats = [
   { value: 50, suffix: "+", label: "Years Combined Experience" },
   { value: 24, suffix: "/7", label: "Availability" },
   { value: 100, suffix: "+", label: "Training Sessions" },
-  { value: 9, suffix: "", label: "Proud Sponsors" },
 ];
 
 export const services = [

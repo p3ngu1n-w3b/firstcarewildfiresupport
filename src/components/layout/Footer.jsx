@@ -6,15 +6,23 @@ import { contact, social } from "../../data/siteContent";
 const Footer = () => {
   return (
     <footer className="bg-brand-dark text-white pt-16 pb-24 md:pb-8">
-      <div className="bg-brand py-3 text-center text-sm font-semibold">
-        24/7 Emergency Support — Call{" "}
-        <a href={`tel:${contact.phones[0].tel}`} className="underline">
-          {contact.phones[0].display}
-        </a>{" "}
-        or{" "}
-        <a href={`tel:${contact.phones[1].tel}`} className="underline">
-          {contact.phones[1].display}
-        </a>
+      <div className="bg-brand py-3 px-4 text-center text-sm font-semibold">
+        <p className="mb-2 sm:mb-1">24/7 Emergency Support</p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2">
+          <a
+            href={`tel:${contact.phones[0].tel}`}
+            className="underline whitespace-nowrap"
+          >
+            {contact.phones[0].display}
+          </a>
+          <span className="hidden sm:inline">or</span>
+          <a
+            href={`tel:${contact.phones[1].tel}`}
+            className="underline whitespace-nowrap"
+          >
+            {contact.phones[1].display}
+          </a>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
