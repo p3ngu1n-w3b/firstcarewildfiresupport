@@ -1,6 +1,8 @@
 import React, { useEffect, useCallback } from "react";
 import { X, ChevronLeft } from "lucide-react";
 
+import { getSectionLabel } from "../../data/galleryImages";
+
 const GalleryLightbox = ({ modal, onClose, onSelectImage, onBack }) => {
   const handleKeyDown = useCallback(
     (e) => {
@@ -34,7 +36,7 @@ const GalleryLightbox = ({ modal, onClose, onSelectImage, onBack }) => {
         >
           <img
             src={item.imageUrl}
-            alt={`${item.section} portfolio`}
+            alt={`${getSectionLabel(item.section)} portfolio`}
             className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </button>

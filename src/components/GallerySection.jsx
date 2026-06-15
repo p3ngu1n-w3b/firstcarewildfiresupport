@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { galleryImages } from "../data/galleryImages";
+import { galleryImages, getSectionLabel } from "../data/galleryImages";
 import SectionHeader from "./ui/SectionHeader";
 import GalleryLightbox from "./ui/GalleryLightbox";
 import Button from "./ui/Button";
@@ -51,14 +51,14 @@ const GallerySection = ({ preview = true }) => {
               <div className="relative">
                 <img
                   src={item.imageUrl}
-                  alt={`${item.section} portfolio`}
+                  alt={`${getSectionLabel(item.section)} portfolio`}
                   className={`w-full object-cover transition-transform duration-500 group-hover:scale-105 ${
                     index === 0 ? "h-80 md:h-full min-h-[280px]" : "h-52"
                   }`}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300" />
                 <span className="absolute bottom-3 left-3 text-white text-xs font-semibold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 px-2 py-1 rounded">
-                  {item.section}
+                  {getSectionLabel(item.section)}
                 </span>
               </div>
             </motion.button>

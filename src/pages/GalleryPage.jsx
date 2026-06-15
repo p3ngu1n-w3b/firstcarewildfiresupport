@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { portfolioSections, splitGalleryImages } from "../data/galleryImages";
+import { portfolioSections, splitGalleryImages, getSectionLabel } from "../data/galleryImages";
 import SectionHeader from "../components/ui/SectionHeader";
 import GalleryLightbox from "../components/ui/GalleryLightbox";
 import { fadeUp } from "../utils/motion";
@@ -22,7 +22,7 @@ const GalleryGrid = ({ images, onImageClick, columns = 4 }) => (
       >
         <img
           src={item.imageUrl}
-          alt={`${item.section} portfolio`}
+          alt={`${getSectionLabel(item.section)} portfolio`}
           className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </button>
