@@ -3,24 +3,14 @@ import { AlertTriangle, X } from "lucide-react";
 import { fireSeasonAlert } from "../data/siteContent";
 
 const FireSeasonBanner = ({ onDismiss }) => {
-  const tickerContent = (
-    <>
-      <span className="inline-flex items-center gap-2 mx-8">
-        <AlertTriangle className="w-4 h-4 flex-shrink-0" />
-        <span className="font-medium">{fireSeasonAlert.message}</span>
-      </span>
-      <span className="inline-flex items-center gap-2 mx-8" aria-hidden="true">
-        <AlertTriangle className="w-4 h-4 flex-shrink-0" />
-        <span className="font-medium">{fireSeasonAlert.message}</span>
-      </span>
-    </>
-  );
-
   return (
     <div className="bg-brand text-white text-sm border-b border-white/10">
       <div className="flex items-center">
-        <div className="flex-1 overflow-hidden py-2.5">
-          <div className="alert-marquee-track flex w-max">{tickerContent}</div>
+        <div className="alert-marquee-viewport flex-1 py-2.5">
+          <div className="alert-marquee-track inline-flex items-center gap-2 whitespace-nowrap">
+            <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+            <span className="font-medium">{fireSeasonAlert.message}</span>
+          </div>
         </div>
         <button
           onClick={onDismiss}

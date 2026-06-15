@@ -148,17 +148,27 @@
     animation: marquee 30s linear infinite;
   }
 
-  @keyframes alert-marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
+  .alert-marquee-viewport {
+    position: relative;
+    overflow: hidden;
+    min-height: 2.5rem;
   }
 
   .alert-marquee-track {
-    animation: alert-marquee 25s linear infinite;
+    position: absolute;
+    top: 50%;
+    animation: alert-marquee-rtl 18s linear infinite;
+  }
+
+  @keyframes alert-marquee-rtl {
+    0% {
+      left: 100%;
+      transform: translateY(-50%) translateX(0);
+    }
+    100% {
+      left: 0;
+      transform: translateY(-50%) translateX(-100%);
+    }
   }
 
   @keyframes ken-burns {
