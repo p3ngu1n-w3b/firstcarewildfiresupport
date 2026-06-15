@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import SiteHeader from "./components/layout/SiteHeader";
+import ScrollToTop from "./components/layout/ScrollToTop";
 import Footer from "./components/layout/Footer";
 import HomePage from "./pages/HomePage";
 import GalleryPage from "./pages/GalleryPage";
@@ -25,6 +26,7 @@ const AnimatedRoutes = () => {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <SiteHeader />
       <main id="main-content">
         <AnimatedRoutes />
