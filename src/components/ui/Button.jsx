@@ -3,7 +3,6 @@ import React from "react";
 const variants = {
   primary: "btn",
   outline: "btn-outline",
-  whatsapp: "btn-whatsapp",
   ghost:
     "inline-flex items-center justify-center gap-2 font-semibold text-brand hover:text-brand-hover transition-colors cursor-pointer",
 };

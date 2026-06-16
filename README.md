@@ -38,7 +38,6 @@ cp .env.example .env
 | `VITE_EMAILJS_SERVICE_ID` | EmailJS service ID |
 | `VITE_EMAILJS_TEMPLATE_ID` | EmailJS template ID |
 | `VITE_EMAILJS_PUBLIC_KEY` | EmailJS public key |
-| `VITE_WHATSAPP_CHANNEL_URL` | WhatsApp Channel invite link (optional — add when ready) |
 
 ### Development
 
@@ -99,16 +98,6 @@ export const fireSeasonAlert = {
   message: "Your alert message here",
 };
 ```
-
-### WhatsApp Channel
-
-When you have your channel invite link, add it to `.env`:
-
-```
-VITE_WHATSAPP_CHANNEL_URL=https://whatsapp.com/channel/0029V...
-```
-
-The Stay Connected section will automatically show a "Join Our Channel" button. Until then, it shows a direct WhatsApp message link.
 
 ### Testimonials
 

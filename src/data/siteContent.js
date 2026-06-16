@@ -29,9 +29,6 @@ export const social = {
   instagram: "https://www.instagram.com/firstcare.george/",
 };
 
-export const whatsappChannelUrl =
-  import.meta.env.VITE_WHATSAPP_CHANNEL_URL || "";
-
 export const fireSeasonAlert = {
   enabled: true,
   message:
