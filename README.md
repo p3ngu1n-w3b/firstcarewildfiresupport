@@ -55,6 +55,27 @@ npm run build
 npm run preview
 ```
 
+Output goes to the `dist/` folder (~92 MB with gallery images).
+
+### Deploy to cPanel
+
+1. Run `npm run build` on the `cursor/site-overhaul-8e79` branch (or merge to main first).
+2. Open the `dist/` folder in your project — it is gitignored, so it only exists after you build locally.
+3. In cPanel **File Manager**, go to `public_html` (or your domain folder).
+4. Upload **everything inside** `dist/` — not the `dist` folder itself:
+   - `index.html`
+   - `assets/` folder
+   - `favicon.ico`, `og-image.jpg`, `robots.txt`, `sitemap.xml`, `.htaccess`
+5. The included `.htaccess` routes `/gallery` and other paths to `index.html` (required for React Router on Apache).
+
+**Tip:** Zip the contents of `dist/` on your machine and use cPanel **Extract** for faster upload:
+
+```bash
+cd dist && zip -r ../firstcare-dist.zip .
+```
+
+Then upload `firstcare-dist.zip` to cPanel and extract it in `public_html`.
+
 ## Project Structure
 
 ```
