@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
+import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import { motion } from "framer-motion";
+import { contact, social } from "../data/siteContent";
+import SectionHeader from "./ui/SectionHeader";
+import Button from "./ui/Button";
+import { fadeUp } from "../utils/motion";
 
 const ContactSection = () => {
-  // Add a mounted state to ensure client-side only rendering for interactive elements
   const [mounted, setMounted] = useState(false);
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
-    service: "",
+    service: "Events",
   });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
-  // Only enable client-side interactivity after mount
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -34,36 +33,25 @@ const ContactSection = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Only proceed if we're on the client side
-    if (typeof window === "undefined") return;
+    const serviceId =
+      import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_s6403fa";
+    const templateId =
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_iahuddc";
+    const publicKey =
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "zWJ63oO2n7wbagWxP";
 
     try {
-      // Replace with your EmailJS service ID, template ID, and public key
-      await emailjs.send(
-        "service_s6403fa",
-        "template_iahuddc",
-        {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
-          service: formData.service,
-        },
-        "zWJ63oO2n7wbagWxP"
-      );
-
+      await emailjs.send(serviceId, templateId, formData, publicKey);
       setSubmitStatus({
         success: true,
         message: "Thank you! We will contact you shortly.",
       });
-
-      // Reset form
       setFormData({
         name: "",
         email: "",
         phone: "",
         message: "",
-        service: "",
+        service: "Events",
       });
     } catch (err) {
       console.error("Error sending email:", err);
@@ -78,316 +66,227 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-16 bg-blue-50">
+    <section id="contact" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900">Contact Us</h2>
-          <div className="w-16 h-1 bg-[rgb(252,3,13)] mx-auto mt-4 mb-6"></div>
-        </div>
+        <SectionHeader
+          title="Contact Us"
+          subtitle="Available 24/7 for emergencies, consultations, and training enquiries."
+        />
 
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2">
-            <div className="p-8 bg-[rgb(252,3,13)] text-white">
-              <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
-              <div className="space-y-8">
-                <div className="flex items-start">
-                  <svg
-                    className="w-6 h-6 mr-3 flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                    />
-                  </svg>
-                  <div>
-                    <p className="font-medium">Phone</p>
-                    <p>
-                      <a href="tel:0791909428" className="hover:underline">
-                        079 190 9428
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <motion.div
+            className="bg-brand-dark text-white rounded-2xl p-8"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
+            <div className="space-y-6">
+              <div className="flex items-start gap-3">
+                <Phone className="w-5 h-5 text-brand flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-medium mb-1">Phone</p>
+                  {contact.phones.map((phone) => (
+                    <p key={phone.tel}>
+                      <a href={`tel:${phone.tel}`} className="hover:underline">
+                        {phone.display}
                       </a>
                     </p>
-                    <p>
-                      <a href="tel:0843144323" className="hover:underline">
-                        084 314 4323
-                      </a>
-                    </p>
-                  </div>
+                  ))}
                 </div>
-                <div className="flex items-start">
-                  <svg
-                    className="w-6 h-6 mr-3 flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+              </div>
+
+              <div className="flex items-start gap-3">
+                <Mail className="w-5 h-5 text-brand flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-medium mb-1">Email</p>
+                  <a
+                    href={`mailto:${contact.email}`}
+                    className="hover:underline"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                  <div>
-                    <p className="font-medium">Email</p>
-                    <p>
-                      <a
-                        href="mailto:firstcarewildfire@gmail.com"
-                        className="hover:underline text-white"
-                      >
-                        firstcarewildfire@gmail.com
-                      </a>
-                    </p>
-                  </div>
+                    {contact.email}
+                  </a>
                 </div>
-                <div className="flex items-start">
-                  <svg
-                    className="w-6 h-6 mr-3 flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                  <div>
-                    <p className="font-medium">Address</p>
-                    <p>George, Western Cape</p>
-                  </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-brand flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-medium mb-1">Location</p>
+                  <p>{contact.location}</p>
                 </div>
-                <div className="flex items-start">
-                  <svg
-                    className="w-6 h-6 mr-3 flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                    ></path>
-                  </svg>
-                  <div>
-                    <p className="font-medium">Social Media</p>
-                    <p>
-                      <a
-                        href="https://www.facebook.com/people/Firstcare-Wildfire-Support/100064602524953/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <svg
-                          className="w-6 h-6 inline-block mr-3"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
-                        </svg>
-                      </a>
-                   
-                      <a
-                        href="https://www.instagram.com/firstcare.george/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <svg
-                          className="w-6 h-6 inline-block mr-3"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm0 2h10a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3zm11 1a1 1 0 100 2 1 1 0 000-2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"></path>
-                        </svg>
-                      </a>
-                    </p>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <MessageCircle className="w-5 h-5 text-brand flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-medium mb-2">Social Media</p>
+                  <div className="flex gap-4">
+                    <a
+                      href={social.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-brand-hover transition-colors"
+                    >
+                      Facebook
+                    </a>
+                    <a
+                      href={social.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-brand-hover transition-colors"
+                    >
+                      Instagram
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Send Us a Message
-              </h3>
-              {/* Only render the form on the client side */}
-              {mounted ? (
-                <form onSubmit={handleSubmit}>
-                  <div className="space-y-4">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Your Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="contact-input"
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="contact-input"
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="phone"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="contact-input"
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="service"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Service Interested In
-                      </label>
-                      <select
-                        id="service"
-                        name="service"
-                        value={formData.service}
-                        onChange={handleChange}
-                        className="contact-input"
-                      >
-                        <option value="Events">
-                          Events
-                        </option>
-                        <option value="Consultation">
-                          Consultation
-                        </option>
-                        <option value="Control Burns">
-                          Control Burns
-                        </option>
-                        <option value="Training">
-                          Training
-                        </option>
-                        <option value="Other">Other</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="message"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Your Message
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows={4}
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        className="contact-input"
-                      ></textarea>
-                    </div>
-
-                    {submitStatus && (
-                      <div
-                        className={`p-3 rounded-md ${
-                          submitStatus.success
-                            ? "bg-green-100 text-green-800"
-                            : "bg-red-100 text-red-800"
-                        }`}
-                      >
-                        {submitStatus.message}
-                      </div>
-                    )}
-
-                    <div>
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full btn flex justify-center items-center"
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <svg
-                              className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                            >
-                              <circle
-                                className="opacity-25"
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                stroke="currentColor"
-                                strokeWidth="4"
-                              ></circle>
-                              <path
-                                className="opacity-75"
-                                fill="currentColor"
-                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                              ></path>
-                            </svg>
-                            Sending...
-                          </>
-                        ) : (
-                          "Send Message"
-                        )}
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              ) : (
-                <div className="py-4 text-center text-gray-500">
-                  Loading form...
-                </div>
-              )}
+            <div className="mt-8 rounded-xl overflow-hidden h-48">
+              <iframe
+                title="Firstcare Wildfire Support location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106583.5!2d22.4!3d-33.96!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e74f2f7c8b8b8b9%3A0x0!2sGeorge%2C%20South%20Africa!5e0!3m2!1sen!2sza!4v1"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
-          </div>
+          </motion.div>
+
+          <motion.div
+            className="bg-surface rounded-2xl p-8 shadow-lg"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              Send Us a Message
+            </h3>
+
+            {mounted ? (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="contact-input"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="contact-input"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="contact-input"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
+                    Service Interested In
+                  </label>
+                  <select
+                    id="service"
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    className="contact-input"
+                  >
+                    <option value="Events">Events</option>
+                    <option value="Consultation">Consultation</option>
+                    <option value="Control Burns">Control Burns</option>
+                    <option value="Training">Training</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                    Your Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    className="contact-input"
+                  />
+                </div>
+
+                {submitStatus && (
+                  <div
+                    className={`p-3 rounded-lg text-sm ${
+                      submitStatus.success
+                        ? "bg-green-100 text-green-800"
+                        : "bg-red-100 text-red-800"
+                    }`}
+                  >
+                    {submitStatus.message}
+                  </div>
+                )}
+
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full"
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </Button>
+              </form>
+            ) : (
+              <p className="text-gray-500 text-center py-8">Loading form...</p>
+            )}
+          </motion.div>
         </div>
       </div>
+
+      <a
+        href={`https://wa.me/${contact.whatsapp}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-20 md:bottom-6 right-6 z-40 w-14 h-14 bg-[#25d366] rounded-full flex items-center justify-center shadow-lg hover:bg-[#1ebe57] transition-colors"
+        aria-label="Chat on WhatsApp"
+      >
+        <svg viewBox="0 0 24 24" className="w-7 h-7 fill-white">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+      </a>
     </section>
   );
 };

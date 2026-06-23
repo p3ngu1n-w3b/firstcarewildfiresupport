@@ -1,27 +1,38 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import HeroSection from "./components/HeroSection";
-import AboutSection from "./components/AboutSection";
-import GallerySection from "./components/GallerySection";
-import ServicesSection from "./components/ServicesSection";
-import ContactSection from "./components/ContactSection";
-import SponsorsSection from "./components/SponsorsSection";
-import DonationsSection from "./components/DonationsSection";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import SiteHeader from "./components/layout/SiteHeader";
+import ScrollToTop from "./components/layout/ScrollToTop";
+import Footer from "./components/layout/Footer";
+import HomePage from "./pages/HomePage";
+import GalleryPage from "./pages/GalleryPage";
+import { pageTransition } from "./utils/motion";
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div key={location.pathname} {...pageTransition}>
+        <Routes location={location}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+        </Routes>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
 
 function App() {
   return (
-    <main>
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <GallerySection />
-      <ServicesSection />
-      <DonationsSection />
-      <ContactSection />
-      <SponsorsSection />
+    <BrowserRouter>
+      <ScrollToTop />
+      <SiteHeader />
+      <main id="main-content">
+        <AnimatedRoutes />
+      </main>
       <Footer />
-    </main>
+    </BrowserRouter>
   );
 }
 
