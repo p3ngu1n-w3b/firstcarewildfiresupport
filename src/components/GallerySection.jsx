@@ -18,7 +18,6 @@ const GallerySection = ({ preview = true }) => {
       title: "Featured Work",
       images: featuredImages,
       selectedImage: item,
-      allImages: featuredImages,
     });
   };
 

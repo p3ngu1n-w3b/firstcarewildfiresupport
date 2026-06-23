@@ -1,24 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { sponsors } from "../data/siteContent";
 import SectionHeader from "./ui/SectionHeader";
 
 const SponsorsSection = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkScreenSize = () => setIsMobile(window.innerWidth < 768);
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-    return () => window.removeEventListener("resize", checkScreenSize);
-  }, []);
-
-  const getSponsorUrl = (sponsor) => {
-    if (sponsor.name === "The Local Choice") {
-      return isMobile ? sponsor.urlMobile : sponsor.urlDesktop;
-    }
-    return sponsor.url;
-  };
-
   const marqueeSponsors = [...sponsors, ...sponsors];
 
   return (
@@ -32,7 +16,7 @@ const SponsorsSection = () => {
           {marqueeSponsors.map((sponsor, index) => (
             <a
               key={`${sponsor.name}-${index}`}
-              href={getSponsorUrl(sponsor)}
+              href={sponsor.url}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center mx-10 flex-shrink-0 opacity-70 hover:opacity-100 transition-opacity"

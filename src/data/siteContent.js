@@ -2,7 +2,6 @@ import nisproAutoLogo from "../assets/sponsors/nispro-auto-george.jpg";
 import tyremartLogo from "../assets/sponsors/tyremart-george.png";
 import thousandSensationsLogo from "../assets/sponsors/thousand-sensations-george.jpg";
 import optimumHostingLogo from "../assets/sponsors/optimumhosting.jpg";
-import theLocalChoiceLogo from "../assets/sponsors/theLocalChoiceLogo.png";
 import cmsLogo from "../assets/sponsors/cmsLogo.jpg";
 import grcom from "../assets/sponsors/grcom.png";
 import besafe from "../assets/sponsors/be-safe.png";
@@ -114,12 +113,6 @@ export const sponsors = [
     name: "Optimum Hosting",
     logo: optimumHostingLogo,
     url: "https://www.ohs.co.za/",
-  },
-  {
-    name: "The Local Choice",
-    logo: theLocalChoiceLogo,
-    urlDesktop: "https://www.facebook.com/TheLocalChoiceGrootbrak",
-    urlMobile: "https://whatsapp.com/channel/0029VbBCelFInlqJbPjfVS0s",
   },
   {
     name: "CMS Towing",

@@ -5,7 +5,6 @@ const images = import.meta.glob("../assets/gallery/*.{jpg,jpeg,JPG}", {
 
 const EXCLUDED_IMAGES = new Set([
   "Header.jpg",
-  "Header2.jpg",
   "fws-team.jpg",
 ]);
 
@@ -234,7 +233,7 @@ const IMAGE_CATEGORIES = {
   },
 };
 
-export const SECTION_LABELS = {
+const SECTION_LABELS = {
   fires: "Fires",
   training: "Training",
   otherServices: "Other Services",
@@ -243,7 +242,7 @@ export const SECTION_LABELS = {
 export const getSectionLabel = (sectionId) =>
   SECTION_LABELS[sectionId] ?? sectionId;
 
-export const PREVIEW_COUNT = 4;
+const PREVIEW_COUNT = 4;
 
 const sortGalleryImages = (a, b) => {
   if (a.featured !== b.featured) {
