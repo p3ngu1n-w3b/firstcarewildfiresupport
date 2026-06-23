@@ -63,7 +63,7 @@ const GalleryPage = () => {
   const [modal, setModal] = useState(null);
 
   const openModal = (title, images, selectedImage = null) => {
-    setModal({ title, images, selectedImage, allImages: images });
+    setModal({ title, images, selectedImage });
   };
 
   const closeModal = () => setModal(null);

@@ -58,7 +58,7 @@ Output goes to the `dist/` folder (~92 MB with gallery images).
 
 ### Deploy to cPanel
 
-1. Run `npm run build` on the `cursor/site-overhaul-8e79` branch (or merge to main first).
+1. Run `npm run build` on the `main` branch.
 2. Open the `dist/` folder in your project — it is gitignored, so it only exists after you build locally.
 3. In cPanel **File Manager**, go to `public_html` (or your domain folder).
 4. Upload **everything inside** `dist/` — not the `dist` folder itself:
